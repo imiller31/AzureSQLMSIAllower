@@ -31,18 +31,11 @@ RETURN 1";
                 .Build();
 
             var sqlConfig = deserializer.Deserialize<SqlConfig>(yaml);
-            Console.WriteLine(sqlConfig.ToString());
-
-            ActiveDirectoryAuthenticationProvider provider = new ActiveDirectoryAuthenticationProvider(sqlConfig.msiClientId);
-            if (provider.IsSupported(SqlAuthenticationMethod.ActiveDirectoryMSI))
-            {
-                SqlAuthenticationProvider.SetProvider(SqlAuthenticationMethod.ActiveDirectoryMSI, provider);
-            }
 
             foreach (KeyValuePair<string, Dictionary <string, string>> db in sqlConfig.databases)
             {
 
-                using (SqlConnection sqlConn = new SqlConnection(string.Format("Server={0};Authentication=Active Directory MSI;Database={1};", sqlConfig.server, db.Key)))
+                using (SqlConnection sqlConn = new SqlConnection(string.Format("Server={0};Authentication=Active Directory MSI;Database={1};UID={2};", sqlConfig.server, db.Key, sqlConfig.msiClientId)))
                 {
                     foreach (KeyValuePair<string, string> msi in db.Value)
                     {
