@@ -1,0 +1,10 @@
+﻿server: server.something
+msiClientId: msi
+databases:
+  regional:
+    hcp: clientID
+  eventgrid:
+    eventgrid: clientID
+  acs:
+    hcp: clientID
+    rp: clientID
