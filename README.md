@@ -5,8 +5,8 @@ Use the below configuration template to add MSI's as db_owners (configurability 
 Assumes an MSI is set as the Azure AD-Admin for the SQL Server.
 
 ```yaml
-Server: server.something
-dbs:
+server: server.something
+databases:
   db1:
     msi1: clientID
   db2:
