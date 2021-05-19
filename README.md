@@ -1,4 +1,4 @@
-# AzureSQLMSIAllower
+# Azure SQL MSI Allower
 Adds MSI client ID's to Azure SQL Databases
 
 Use the below configuration template to add MSI's as db_owners (configurability coming soon) to a give Azure SQL DB.
