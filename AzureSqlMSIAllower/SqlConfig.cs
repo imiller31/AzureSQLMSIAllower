@@ -7,7 +7,7 @@ namespace AzureSqlMSIAllower
     public class SqlConfig
     {
         public string server { get; set; }
-        public string msiClientId { get; set; }
+        public string msiObjectId { get; set; }
         public Dictionary<string, Dictionary<string, string>> databases { get; set; }
     }
 }

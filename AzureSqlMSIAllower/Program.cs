@@ -33,7 +33,7 @@ SELECT COUNT(*) from sys.database_principals where name = '{0}';";
             {
                 foreach (KeyValuePair<string, string> msi in db.Value)
                 {
-                    using (SqlConnection sqlConn = new SqlConnection(string.Format("Server={0};Authentication=Active Directory MSI;Database={1};UID={2};", sqlConfig.server, db.Key, sqlConfig.msiClientId)))
+                    using (SqlConnection sqlConn = new SqlConnection(string.Format("Server={0};Authentication=Active Directory MSI;Database={1};UID={2};", sqlConfig.server, db.Key, sqlConfig.msiObjectId)))
                     {
                         string commandTxt = string.Format(allowCmd, msi.Key, msi.Value);
                         using (SqlCommand command = new SqlCommand(commandTxt, sqlConn))
